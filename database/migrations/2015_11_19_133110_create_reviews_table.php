@@ -29,10 +29,13 @@ class CreateReviewsTable extends Migration {
             $table->string('opening_days');
             $table->string('opening_time');
             $table->string('logo');
-            $table->string('facebook');            
+            $table->string('facebook');
+
             $table->string('instagram');
-            $table->integer('rating_quality');
-            $table->integer('rating_budget');
+            $table->integer('rating_quality')->default(0);
+            $table->integer('rating_budget')->default(0);
+
+            $table->integer('views')->default(0);
 
             $table->boolean('pet_review')->default(0);
             $table->boolean('status')->default(0);
