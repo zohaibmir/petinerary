@@ -25,14 +25,14 @@ class Review extends Base {
      *
      * @var string
      */
-    protected $table = 'reviews';
+    protected $table = 'notifications';
 
     /**
      * Properties that can be mass assigned
      *
      * @var array
      */
-    protected $fillable = array('name', 'street', 'number', 'neighborhood', 'city', 'state', 'country', 'address', 'phone', 'email', 'opening_days', 'opening_time', 'logo', 'facebook', 'instagram', 'rating_quality', 'views', 'rating_budget', 'pet_review', 'status', 'category_id', 'rule_conditions');
+    protected $fillable = array('sender_id', 'receiver_id', 'description', 'type', 'status');
 
     /*
      * prevents the listed columns from mass assignment.
@@ -45,7 +45,5 @@ class Review extends Base {
      * @var array
      */
     protected $hidden = ['id'];
-
-  
 
 }
