@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration {
             $table->string('email')->unique();
             $table->string('city', 60);
             $table->string('state', 60);
-            $table->string('country', 60);            
+            $table->string('country', 60)->nullable(); 
+            $table->string('address');
             $table->string('language', 60);
             $table->string('instagram', 150);
             $table->string('facebook_id', 150)->nullable();
