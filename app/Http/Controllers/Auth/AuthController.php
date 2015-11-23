@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use Validator;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Auth;
+use Validator;
+use App\User;
 
 class AuthController extends Controller {
     /*
@@ -21,8 +20,7 @@ class AuthController extends Controller {
       |
      */
 
-use AuthenticatesAndRegistersUsers,
-    ThrottlesLogins;
+//use AuthenticatesAndRegistersUsers,    ThrottlesLogins;
 
     /**
      * Create a new authentication controller instance.
@@ -30,7 +28,7 @@ use AuthenticatesAndRegistersUsers,
      * @return void
      */
     public function __construct() {
-      //  $this->middleware('guest', ['except' => 'getLogout']);
+        //  $this->middleware('guest', ['except' => 'getLogout']);
     }
 
     /**
@@ -61,15 +59,14 @@ use AuthenticatesAndRegistersUsers,
         ]);
     }
 
-    
-    
     public function getuserAuthenticate() {
-        
-          return view('admin.login.login');
+
+        return view('admin.login.login');
     }
+
     /**
      * Developed By Zohaib
-     * Date: 2015-11-20
+     * Date: 2015-11-23
      * Desc: This function is used to validate the user account.
      * @param  \Illuminate\Http\Request  $request      
      * @return \Illuminate\Http\Response
@@ -82,24 +79,51 @@ use AuthenticatesAndRegistersUsers,
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
-            
-            //return back()->withErrors($validator);
-             return back()->withInput()->withErrors($validator);
-           //  return $validator->errors()->all();
-
-            //return response()->json(array('error' => true, 'mesg' => $validator->messages()->all()), 422);
+            return back()->withInput()->withErrors($validator);
         }
 
         // Check User Login
         if (Auth::attempt(array('email' => $request->input('email'), 'password' => $request->input('password'), 'status' => 1))) {
             $user = Auth::user();
-            //return response()->json(array('error' => false, 'user' => $user), 200);
+            return redirect()->intended('admin.dashboard');
         }
-        
-         return redirect()->intended('dashboard');
 
-        //Send Error Message in case of wrong credentials
-        //return response()->json(array('error' => true, 'mesg' => ['Vänligen kontrollera dina uppgifter!']), 422);
+        return back()->withInput()->withErrors(['Username or Password is Incorrect.']);
+    }
+    
+    
+
+    /**
+     * Developed By Zohaib
+     * Date: 2015-11-23
+     * Handle a registration request for the application.
+     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Repositories\UserRepository
+     * @return \Illuminate\Http\Response
+     */
+    
+    public function postaddUser(Request $request) {
+        //$rules = array('email' => 'required|email|unique:users', 'password' => 'required|min:6');
+
+        $rules = User::$rules;
+        //  $this->validate($request, $rules);
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+
+            return response()->json(array('error' => true, 'mesg' => $validator->messages()->all()), 422);
+        }
+
+        $userRepository = new App\Repositories\UserRepository;
+        //Save New User on Sign up
+        $user = $userRepository->store($request);
+
+        if ($user != null) {
+            //Auth::login($user);
+            return response()->json(array('error' => false, 'user' => $user), 201);
+        }
+
+        return response()->json(array('error' => true, 'mesg' => ['Fel uppstod under skapandet av konto']), 422);
     }
 
 }

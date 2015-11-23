@@ -28,7 +28,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'city', 'state', 'country', 'address', 'language', 'instagram', 'facebook_id', 'profile_img', 'pet', 'pet_img', 'password', 'status', 'country_id', 'language_id', 'role_id'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -48,8 +48,13 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     //protected $encrypt = array('user_name', 'first_name', 'last_name', 'email', 'phone', 'address', 'zip', 'city', 'zip', 'region', 'country', 'status', 'is_active', 'visible', 'parent_id', 'relation_description', 'relation_status', 'relation_hide', 'password', 'secret', 'created_at', 'updated_at');
 
     public static $rules = array(
+        'name' => 'required',
         'email' => 'required|email|unique:users',
-        'password' => 'required'
+        'password' => 'required',
+        'city' => 'required',
+        'country_id' => 'required|numeric',
+        'language_id' => 'required|numeric',
+        'role_id' => 'required|numeric'
     );
 
 }
