@@ -15,8 +15,8 @@ class CreateLanguagesTable extends Migration {
             $table->engine = 'InnoDB';
 
             $table->increments('id');    
-            $table->text('name')->nullable();
-            $table->text('code')->nullable();
+            $table->string('name',50)->nullable();
+            $table->string('code',50)->nullable();
 
            // $table->timestamps();
         });

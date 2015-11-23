@@ -32,7 +32,7 @@ class Invite extends Base {
      *
      * @var array
      */
-    protected $fillable = array('code', 'email');
+    protected $fillable = array('code', 'email', 'claimed_at');
 
     /*
      * prevents the listed columns from mass assignment.

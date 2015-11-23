@@ -1,7 +1,9 @@
 <?php
 
 return [
-
+    /*
+     * Google Place Api Key : AIzaSyBQKgW0JuYZ3AFb7lG1oBPKVIfna4-hTdI
+     */
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode

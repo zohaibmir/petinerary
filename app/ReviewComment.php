@@ -18,21 +18,21 @@ use App\Base;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Base {
+class ReviewComment extends Base {
 
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'reviews';
+    protected $table = 'review_comments';
 
     /**
      * Properties that can be mass assigned
      *
      * @var array
      */
-    protected $fillable = array('google_id', 'name', 'street', 'number', 'neighborhood', 'city', 'state', 'country', 'address', 'phone', 'website', 'email', 'opening_days', 'opening_time', 'logo', 'facebook', 'instagram','human_review', 'pet_review', 'rating_quality', 'views', 'rating_budget', 'pet_review', 'status', 'category_id', 'language_id', 'rule_conditions');
+    protected $fillable = array('comment', 'status', 'user_id', 'review_id');
 
     /*
      * prevents the listed columns from mass assignment.

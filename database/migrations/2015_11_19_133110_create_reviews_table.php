@@ -15,35 +15,44 @@ class CreateReviewsTable extends Migration {
             $table->engine = 'InnoDB';
 
             $table->increments('id');
+            $table->string('google_id')->nullable();
+            $table->string('name')->nullable();
+            $table->string('street')->nullable();
+            $table->string('number')->nullable();
+            $table->string('neighborhood')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('country')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('website')->nullable();
+            $table->string('opening_days')->nullable();
+            $table->string('opening_time')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
 
-            $table->string('name');
-            $table->string('street');
-            $table->string('number');
-            $table->string('neighborhood');
-            $table->string('city');
-            $table->string('state');
-            $table->string('country');
-            $table->string('address');
-            $table->string('phone');
-            $table->string('email');
-            $table->string('opening_days');
-            $table->string('opening_time');
-            $table->string('logo');
-            $table->string('facebook');
+            $table->text('human_review')->nullable();
+            $table->text('pet_review')->nullable();
 
-            $table->string('instagram');
+
             $table->integer('rating_quality')->default(0);
             $table->integer('rating_budget')->default(0);
 
             $table->integer('views')->default(0);
 
+
             $table->boolean('pet_review')->default(0);
             $table->boolean('status')->default(0);
+
+            $table->text('rule_conditions')->nullable();
 
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
-            $table->text('rule_conditions');
+            $table->integer('language_id')->unsigned();
+            $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');
 
             $table->timestamps();
         });
