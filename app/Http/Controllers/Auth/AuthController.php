@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -81,7 +82,10 @@ use AuthenticatesAndRegistersUsers,
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
-             return $validator->errors()->all();
+            
+            //return back()->withErrors($validator);
+             return back()->withInput()->withErrors($validator);
+           //  return $validator->errors()->all();
 
             //return response()->json(array('error' => true, 'mesg' => $validator->messages()->all()), 422);
         }

@@ -1,7 +1,9 @@
-<div data-alert class="alert-box radius {{ $type ? ' ' . $type : '' }}-message">
-    {{ $message }}
-    @foreach ($errors->all() as $error)
-    <br>    {{ $error }}     
-    @endforeach
-    <a href="#" class="close">&times;</a>
-</div>	
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif

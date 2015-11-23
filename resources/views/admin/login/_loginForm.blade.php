@@ -3,8 +3,8 @@
 </div>
 <p class="text-center mb30">Welcome to Urban. Please sign in to your account</p>
 <div class="form-inputs">
-    <input type="email" class="form-control input-lg" placeholder="Email Address">
-    <input type="password" class="form-control input-lg" placeholder="Password">
+    <input type="email" id="email" name="email" class="form-control input-lg" placeholder="Email Address">
+    <input type="password" id="password" name="password" class="form-control input-lg" placeholder="Password">
 </div>
 <button class="btn btn-success btn-block btn-lg mb15" type="submit">
     <span>Sign in</span>

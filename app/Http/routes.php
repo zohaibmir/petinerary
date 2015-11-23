@@ -17,26 +17,26 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('login', function () {
-        return view('admin.login.login');
-    });
-
-    
-    //Login Route for Admin
+        
+    //Admin SignIn
     Route::get('authentication', 'Auth\AuthController@getuserAuthenticate');    
     Route::post('authentication', 'Auth\AuthController@postuserAuthenticate');
-    
-    
 
 
+    //Forget Password
     Route::match(['get', 'post'], 'forget-password', function () {
         return view('password.forget');
     });
 
-
+    //Reset Admin Password
     Route::match(['get', 'post'], 'reset-password/{token}', function () {
         return view('password.reset');
     });
+    
+    
+   //Add User
+    
+    
 });
 
 Route::group(['prefix' => 'ambassadors'], function () {
