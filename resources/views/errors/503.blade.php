@@ -1,47 +1,32 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Be right back.</title>
+@extends('layouts.simple')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('title', 'Page Not Found')
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+@section('sidebar')
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
+@endsection
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+@section('content')
+<div class="main-content">
+    <div class="eq-col">
+        <div class="relative full-height">
+            <div class="display-row">
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
+                <!-- error wrapper -->
+                <div class="center-wrapper error-page">
+                    <div class="center-content text-center">
+                        <div class="error-number">
+                            <span>404</span>
+                        </div>
+                        <div class="h5">Be right back.</div>
+                        <p>Sorry, Site is down for maintaince</p>
+                    </div>
+                </div>
+                <!-- /error wrapper -->
 
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Be right back.</div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+
+</div>
+@endsection

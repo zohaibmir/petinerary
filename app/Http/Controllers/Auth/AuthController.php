@@ -29,7 +29,7 @@ use AuthenticatesAndRegistersUsers,
      * @return void
      */
     public function __construct() {
-        $this->middleware('guest', ['except' => 'getLogout']);
+      //  $this->middleware('guest', ['except' => 'getLogout']);
     }
 
     /**
@@ -60,6 +60,12 @@ use AuthenticatesAndRegistersUsers,
         ]);
     }
 
+    
+    
+    public function getuserAuthenticate() {
+        
+          return view('admin.login.login');
+    }
     /**
      * Developed By Zohaib
      * Date: 2015-11-20
@@ -75,7 +81,7 @@ use AuthenticatesAndRegistersUsers,
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
-            return redirect('admin/authentication')->withErrors($validator)->withInput();
+             return $validator->errors()->all();
 
             //return response()->json(array('error' => true, 'mesg' => $validator->messages()->all()), 422);
         }
@@ -85,6 +91,8 @@ use AuthenticatesAndRegistersUsers,
             $user = Auth::user();
             //return response()->json(array('error' => false, 'user' => $user), 200);
         }
+        
+         return redirect()->intended('dashboard');
 
         //Send Error Message in case of wrong credentials
         //return response()->json(array('error' => true, 'mesg' => ['Vänligen kontrollera dina uppgifter!']), 422);
