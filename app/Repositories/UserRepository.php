@@ -36,7 +36,13 @@ class UserRepository {
         $user->country_id = $request->country_id;
         $user->language_id = $request->language_id;
         $user->status = 1;
-        $user->role_id = $request->role_id;
+
+        if ($request->has('role_id')) {
+            $user->role_id = $request->role_id;
+        } else {
+            $user->role_id = 3;
+        }
+
         $user->password = Hash::make($request->password);
 
         if ($user->save()) {

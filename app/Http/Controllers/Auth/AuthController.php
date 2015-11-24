@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Validator;
 use App\User;
+use App\Repositories\UserRepository;
 
 class AuthController extends Controller {
     /*
@@ -114,7 +115,7 @@ class AuthController extends Controller {
             return response()->json(array('error' => true, 'mesg' => $validator->messages()->all()), 422);
         }
 
-        $userRepository = new App\Repositories\UserRepository;
+        $userRepository = new UserRepository();
         //Save New User on Sign up
         $user = $userRepository->store($request);
 

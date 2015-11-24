@@ -21,6 +21,10 @@ Route::group(['prefix' => 'admin'], function () {
     //Admin SignIn
     Route::get('authentication', 'Auth\AuthController@getuserAuthenticate');    
     Route::post('authentication', 'Auth\AuthController@postuserAuthenticate');
+    
+    
+    Route::get('add-new-user', 'Auth\AuthController@postaddUser');
+    Route::post('add-new-user', 'Auth\AuthController@postaddUser');
 
 
     //Forget Password

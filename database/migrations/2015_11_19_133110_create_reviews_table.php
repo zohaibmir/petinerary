@@ -43,7 +43,7 @@ class CreateReviewsTable extends Migration {
             $table->integer('views')->default(0);
 
 
-            $table->boolean('pet_review')->default(0);
+            $table->boolean('is_pet')->default(0);
             $table->boolean('status')->default(0);
 
             $table->text('rule_conditions')->nullable();

@@ -17,6 +17,8 @@ class CreateReviewCommentsTable extends Migration {
             $table->increments('id');      
             
             $table->text('comment');            
+            $table->boolean('is_pet')->default(0);
+            
             $table->boolean('status')->default(0);                                   
             
             $table->integer('user_id')->unsigned();
