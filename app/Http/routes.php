@@ -22,9 +22,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('authentication', 'Auth\AuthController@getuserAuthenticate');    
     Route::post('authentication', 'Auth\AuthController@postuserAuthenticate');
     
-    
-    Route::get('add-new-user', 'Auth\AuthController@postaddUser');
+    //Add New User from Admin
+    Route::get('add-new-user', 'Auth\AuthController@getaddUser');
     Route::post('add-new-user', 'Auth\AuthController@postaddUser');
+    
+    //Ambassdors Invites
+    Route::get('invite-ambassdor', 'Admin\AdminController@getAmbassdorInvite');
+    Route::post('invite-ambassdor', 'Admin\AdminController@postAmbassdorInvite');
 
 
     //Forget Password

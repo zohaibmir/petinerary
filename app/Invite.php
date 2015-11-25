@@ -46,6 +46,8 @@ class Invite extends Base {
      */
     protected $hidden = ['id'];
 
-  
+     public static $rules = array(     
+        'email' => 'required|email|unique:invites'
+    );
 
 }
