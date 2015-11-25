@@ -49,7 +49,7 @@ Route::group(['prefix' => 'ambassadors'], function () {
 
 
     Route::get('sign-up/{code}', 'Ambassdor\AmbassdorController@getregisterUser');
-    Route::post('sign-up', 'Admin\AmbassdorController@postregisterUser');
+    Route::post('sign-up/{code}', 'Ambassdor\AmbassdorController@postregisterUser');
 
 
 
