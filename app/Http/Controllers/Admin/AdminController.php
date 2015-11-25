@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AdminController;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,26 +9,29 @@ use Validator;
 use App\User;
 use App\Repositories\UserRepository;
 use App\Invite;
-use App\Repositories\InviteAmbassdorRepository;
+use App\Repositories\InviteRepository;
 
 class AdminController extends Controller {
 
     public function __construct() {
         //  $this->middleware('guest', ['except' => 'getLogout']);
     }
+    
 
     /**
      * Create a new user Ambassdor invite instance for a valid signUp.
      *
-     * @param  array  $data
-     * @return User
+     * @param  array  $request
+     * @return Invite
      */
     
-    public function getAmbassdorInvite($request) {
+    
+    
+    public function getAmbassdorInvite() {
          return view('admin.invites.invite');
     }
     
-    public function postAmbassdorInvite($request) {
+    public function postAmbassdorInvite(Request $request) {
         
         $rules = Invite::$rules;
         //  $this->validate($request, $rules);
@@ -39,7 +42,7 @@ class AdminController extends Controller {
             return response()->json(array('error' => true, 'mesg' => $validator->messages()->all()), 422);
         }
         
-        $invite = new InviteAmbassdorRepository();
+        $invite = new InviteRepository();
         
         $invitation = $invite->store($request);
         

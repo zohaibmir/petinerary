@@ -11,7 +11,7 @@ namespace App\Repositories;
 use App\Invite;
 use Illuminate\Support\Facades\Hash;
 
-class InviteAmbassdorRepository {
+class InviteRepository {
 
     /**
      * Sign Up New User

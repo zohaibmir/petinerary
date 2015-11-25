@@ -17,15 +17,15 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => 'admin'], function () {
-        
+
     //Admin SignIn
-    Route::get('authentication', 'Auth\AuthController@getuserAuthenticate');    
+    Route::get('authentication', 'Auth\AuthController@getuserAuthenticate');
     Route::post('authentication', 'Auth\AuthController@postuserAuthenticate');
-    
+
     //Add New User from Admin
     Route::get('add-new-user', 'Auth\AuthController@getaddUser');
     Route::post('add-new-user', 'Auth\AuthController@postaddUser');
-    
+
     //Ambassdors Invites
     Route::get('invite-ambassdor', 'Admin\AdminController@getAmbassdorInvite');
     Route::post('invite-ambassdor', 'Admin\AdminController@postAmbassdorInvite');
@@ -40,14 +40,20 @@ Route::group(['prefix' => 'admin'], function () {
     Route::match(['get', 'post'], 'reset-password/{token}', function () {
         return view('password.reset');
     });
-    
-    
-   //Add User
-    
-    
+
+
+    //Add User
 });
 
 Route::group(['prefix' => 'ambassadors'], function () {
+
+
+    Route::get('sign-up/{code}', 'Ambassdor\AmbassdorController@getregisterUser');
+    Route::post('sign-up', 'Admin\AmbassdorController@postregisterUser');
+
+
+
+
 
     Route::match(['get', 'post'], 'login', function () {
         return view('ambassdor.auth.login');
