@@ -8,11 +8,16 @@ use Auth;
 use Validator;
 use App\User;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Session;
 
 class AmbassdorController extends Controller {
 
     public function __construct() {
         //  $this->middleware('guest', ['except' => 'getLogout']);
+    }
+
+    public function getDashboard() {
+        return view('ambassdor.dashboard');
     }
 
     public function getuserAuthenticate() {
@@ -39,9 +44,10 @@ class AmbassdorController extends Controller {
         }
 
         // Check User Login
-        if (Auth::attempt(array('email' => $request->input('email'), 'password' => $request->input('password'), 'status' => 1))) {
-            $user = Auth::user();
-            return redirect()->intended('ambassdor.dashboard');
+        if (Auth::attempt(array('email' => $request->input('email'), 'password' => $request->input('password'), 'status' => 1, 'role_id' => 2))) {
+            Session::put('email', Auth::user()->email);
+            Session::put('user_id', Auth::user()->id);
+            return redirect()->intended('ambassadors/dashboard');
         }
 
         return back()->withInput()->withErrors(['Username or Password is Incorrect.']);
@@ -93,12 +99,19 @@ class AmbassdorController extends Controller {
             if (Auth::check()) {
                 Session::put('email', Auth::user()->email);
                 Session::put('user_id', Auth::user()->id);
+                return redirect()->intended('ambassdor.dashboard');
             }
 
             return response()->json(array('error' => false, 'user' => $user), 201);
         }
 
         return response()->json(array('error' => true, 'mesg' => ['Fel uppstod under skapandet av konto']), 422);
+    }
+
+    public function getLogout() {
+        Auth::logout();
+        Session::flush();
+        return redirect()->intended('ambassadors/login');
     }
 
 }

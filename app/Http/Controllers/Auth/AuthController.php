@@ -91,8 +91,6 @@ class AuthController extends Controller {
 
         return back()->withInput()->withErrors(['Username or Password is Incorrect.']);
     }
-    
-    
 
     /**
      * Developed By Zohaib
@@ -102,7 +100,6 @@ class AuthController extends Controller {
      * @param  App\Repositories\UserRepository
      * @return \Illuminate\Http\Response
      */
-    
     public function postaddUser(Request $request) {
         //$rules = array('email' => 'required|email|unique:users', 'password' => 'required|min:6');
 
@@ -125,6 +122,11 @@ class AuthController extends Controller {
         }
 
         return response()->json(array('error' => true, 'mesg' => ['Fel uppstod under skapandet av konto']), 422);
+    }
+
+    public function getLogout() {
+        Auth::logout();
+        Session::flush();
     }
 
 }

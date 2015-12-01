@@ -48,22 +48,32 @@ Route::group(['prefix' => 'admin'], function () {
 Route::group(['prefix' => 'ambassadors'], function () {
 
 
+    //Ambassdor SignUp
     Route::get('sign-up/{code}', 'Ambassdor\AmbassdorController@getregisterUser');
     Route::post('sign-up/{code}', 'Ambassdor\AmbassdorController@postregisterUser');
 
+    //Ambassdor Login
+    Route::get('login', 'Ambassdor\AmbassdorController@getuserAuthenticate');
+    Route::post('login', 'Ambassdor\AmbassdorController@postuserAuthenticate');
+
+    //Ambassdor DashBoard
+    Route::get('dashboard', 'Ambassdor\AmbassdorController@getDashboard');
+
+
+    //Ambassdor Add Review
+    Route::get('ambassdor-login', 'Ambassdor\AmbassdorController@getuserAuthenticate');
+    Route::post('ambassdor-login', 'Ambassdor\AmbassdorController@postuserAuthenticate');
 
 
 
+    //Ambassdor Forget Password
 
-    Route::match(['get', 'post'], 'login', function () {
-        return view('ambassdor.auth.login');
-    });
 
     Route::match(['get', 'post'], 'forget-password', function () {
         return view('password.forget');
     });
 
-
+    //Reset Password
     Route::match(['get', 'post'], 'reset-password/{token}', function () {
         return view('password.reset');
     });

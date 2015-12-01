@@ -1,6 +1,6 @@
 @extends('layouts.simple')
 
-@section('title', 'Admin Login')
+@section('title', 'Ambassdor SignUp')
 
 @section('sidebar')
 
