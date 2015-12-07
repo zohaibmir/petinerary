@@ -26,6 +26,11 @@ class AdminController extends Controller {
      */
     
     
+     public function getDashboard() {
+        return view('admin.dashboard');
+    }
+    
+    
     
     public function getAmbassdorInvite() {
          return view('admin.invites.invite');

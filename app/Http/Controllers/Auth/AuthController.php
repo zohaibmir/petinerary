@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -86,7 +86,7 @@ class AuthController extends Controller {
         // Check User Login
         if (Auth::attempt(array('email' => $request->input('email'), 'password' => $request->input('password'), 'status' => 1))) {
             $user = Auth::user();
-            return redirect()->intended('admin.dashboard');
+            return redirect()->intended('admin/dashboard');
         }
 
         return back()->withInput()->withErrors(['Username or Password is Incorrect.']);
