@@ -19,15 +19,15 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function () {
 
     //Admin SignIn
-    Route::get('authentication', 'Auth\AuthController@getuserAuthenticate');
-    Route::post('authentication', 'Auth\AuthController@postuserAuthenticate');
+    Route::get('login', 'Auth\AuthController@getuserAuthenticate');
+    Route::post('login', 'Auth\AuthController@postuserAuthenticate');
 
     //Ambassdor DashBoard
     Route::get('dashboard', 'Admin\AdminController@getDashboard');
 
     //Add New User from Admin
-    Route::get('add-new-user', 'Auth\AuthController@getaddUser');
-    Route::post('add-new-user', 'Auth\AuthController@postaddUser');
+    Route::get('add-new-user', 'Admin\AdminController@getaddUser');
+    Route::post('add-new-user', 'Admin\AdminController@postaddUser');
 
     //Ambassdors Invites
     Route::get('invite-ambassdor', 'Admin\AdminController@getAmbassdorInvite');

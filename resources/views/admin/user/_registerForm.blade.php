@@ -2,8 +2,7 @@
     <img src="{{asset('images/logo-dark.png')}}" />
 </div>
 <p class="text-center mb30">Welcome to Urban. Please sign in to your account</p>
-<div class="form-inputs">
-    <!--input type="hidden" id="token" name="token" class="form-control input-lg" value="{{$token}}" placeholder="Token"-->
+<div class="form-inputs">    
     <input type="email" id="email" name="email" class="form-control input-lg" placeholder="Email Address">
     <input type="text" id="name" name="name" class="form-control input-lg" placeholder="Name">        
     <input type="text" id="instagram" name="instagram" class="form-control input-lg" placeholder="instagram">
@@ -20,7 +19,7 @@
     <input type="password" id="password" name="password" class="form-control input-lg" placeholder="Password">
 </div>
 <button class="btn btn-success btn-block btn-lg mb15" type="submit">
-    <span>Sign Up</span>
+    <span>Add User</span>
 </button>
 <p>
     <a href="extras-signup.html">Create an account</a> ·
