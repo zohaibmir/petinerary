@@ -4,9 +4,9 @@
 
 @section('sidebar')
 @parent
-@include('ambassdor._sidebar')
+@include('admin._sidebar')
 @endsection
 
 @section('content')
-@include('ambassdor._dashboard')
+@include('admin._dashboard')
 @endsection
